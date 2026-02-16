@@ -1,0 +1,18 @@
+# OpenTofu / Terraform
+*.tfstate
+*.tfstate.backup
+*.tfstate.lock.info
+.terraform/
+terraform.tfvars
+*.auto.tfvars
+
+# Secrets
+*.secret
+.envrc.local
+
+# Nix
+result
+result-*
+
+# OS
+.DS_Store

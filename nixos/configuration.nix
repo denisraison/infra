@@ -35,6 +35,6 @@
   services.rekan = {
     enable = true;
     domain = "rekan.com.br";
-    envFile = "/run/secrets/rekan.env";
+    envFile = "/etc/rekan.env";
   };
 }

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, rekan-staging, ... }:
 
 {
   imports = [
@@ -32,9 +32,17 @@
     sqlite
   ];
 
-  services.rekan = {
-    enable = true;
-    domain = "rekan.com.br";
-    envFile = "/etc/rekan.env";
+  services.rekan.instances = {
+    prod = {
+      domain = "rekan.com.br";
+      envFile = "/etc/rekan.env";
+    };
+    staging = {
+      domain = "staging.rekan.com.br";
+      port = 8091;
+      envFile = "/etc/rekan-staging.env";
+      package = rekan-staging.packages.aarch64-linux.api;
+      webRoot = rekan-staging.packages.aarch64-linux.web;
+    };
   };
 }

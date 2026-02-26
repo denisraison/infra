@@ -18,6 +18,24 @@
         "type": "github"
       }
     },
+    "flake-utils_2": {
+      "inputs": {
+        "systems": "systems_2"
+      },
+      "locked": {
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1751274312,
@@ -50,17 +68,52 @@
         "type": "github"
       }
     },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1771177547,
+        "narHash": "sha256-trTtk3WTOHz7hSw89xIIvahkgoFJYQ0G43IlqprFoMA=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "ac055f38c798b0d87695240c7b761b82fc7e5bc2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "rekan": {
       "inputs": {
         "flake-utils": "flake-utils",
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1772077659,
-        "narHash": "sha256-su6VHyeSX+/QfOFn6OFSf1PyEoHN5X3nmKzVRfu/eLs=",
+        "lastModified": 1772080591,
+        "narHash": "sha256-jki0eKDZRcXEvsQKWXAabGEKa36i9INYYjtkRXOjrAE=",
         "owner": "denisraison",
         "repo": "rekan",
-        "rev": "7c1b06380fdda3d5c8fe19fd1819d0fe3c48dd52",
+        "rev": "26b9d2c32c1a5de5cbc548d320f51fbc22c7f4d8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "denisraison",
+        "repo": "rekan",
+        "type": "github"
+      }
+    },
+    "rekan-staging": {
+      "inputs": {
+        "flake-utils": "flake-utils_2",
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1772080591,
+        "narHash": "sha256-jki0eKDZRcXEvsQKWXAabGEKa36i9INYYjtkRXOjrAE=",
+        "owner": "denisraison",
+        "repo": "rekan",
+        "rev": "26b9d2c32c1a5de5cbc548d320f51fbc22c7f4d8",
         "type": "github"
       },
       "original": {
@@ -72,10 +125,26 @@
     "root": {
       "inputs": {
         "nixpkgs": "nixpkgs",
-        "rekan": "rekan"
+        "rekan": "rekan",
+        "rekan-staging": "rekan-staging"
       }
     },
     "systems": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_2": {
       "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",

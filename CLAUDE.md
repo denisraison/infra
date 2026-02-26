@@ -17,15 +17,19 @@ Single Hetzner CAX11 ARM64 server (nbg1) running NixOS 24.11 with Caddy. Apps br
 
 ## Deploy
 
+Server is ARM64, local machine is x86_64. Can't cross-build, so the server builds from the GitHub flake:
+
 ```bash
-nixos-rebuild switch --flake .#prod --target-host root@46.225.161.186 --build-host root@46.225.161.186
+ssh root@46.225.161.186 "nixos-rebuild switch --flake github:denisraison/infra#prod"
 ```
 
-Update rekan:
+Update rekan to a specific release or latest, then push and deploy:
 
 ```bash
 nix flake lock --override-input rekan github:denisraison/rekan/v0.2.0  # specific release
 nix flake lock --update-input rekan                                     # latest main
+git add flake.lock && git commit -m "Update rekan" && git push
+ssh root@46.225.161.186 "nixos-rebuild switch --flake github:denisraison/infra#prod"
 ```
 
 ## OpenTofu

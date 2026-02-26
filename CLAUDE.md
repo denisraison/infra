@@ -20,7 +20,7 @@ Single Hetzner CAX11 ARM64 server (nbg1) running NixOS 24.11 with Caddy. Apps br
 Server is ARM64, local machine is x86_64. Can't cross-build, so the server builds from the GitHub flake:
 
 ```bash
-ssh root@46.225.161.186 "nixos-rebuild switch --flake github:denisraison/infra#prod"
+ssh root@46.225.161.186 "nixos-rebuild switch --flake github:denisraison/infra#prod --refresh"
 ```
 
 Update rekan to a specific release or latest, then push and deploy:
@@ -29,7 +29,7 @@ Update rekan to a specific release or latest, then push and deploy:
 nix flake lock --override-input rekan github:denisraison/rekan/v0.2.0  # specific release
 nix flake lock --update-input rekan                                     # latest main
 git add flake.lock && git commit -m "Update rekan" && git push
-ssh root@46.225.161.186 "nixos-rebuild switch --flake github:denisraison/infra#prod"
+ssh root@46.225.161.186 "nixos-rebuild switch --flake github:denisraison/infra#prod --refresh"
 ```
 
 ## OpenTofu
@@ -49,6 +49,16 @@ Each app repo exports a `nixosModules.default` from its flake. To add one:
 2. Import its module in `nixosConfigurations.prod.modules`
 3. Configure `services.<app>` in `nixos/configuration.nix`
 4. Deploy
+
+## Secrets
+
+App secrets live in `/etc/<app>.env` on the server (not in git). To view or edit:
+
+```bash
+ssh root@46.225.161.186 "cat /etc/rekan.env"
+ssh root@46.225.161.186 "vim /etc/rekan.env"
+ssh root@46.225.161.186 "systemctl restart rekan"
+```
 
 ## Important
 

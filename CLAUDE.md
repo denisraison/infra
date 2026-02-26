@@ -1,6 +1,6 @@
-# Postador AI Infrastructure
+# Infrastructure
 
-Single Hetzner CAX11 ARM64 server (nbg1) running NixOS 24.11 with Caddy + PocketBase.
+Single Hetzner CAX11 ARM64 server (nbg1) running NixOS 24.11 with Caddy. Apps bring their own NixOS modules as flake inputs.
 
 ## Server
 
@@ -10,16 +10,22 @@ Single Hetzner CAX11 ARM64 server (nbg1) running NixOS 24.11 with Caddy + Pocket
 
 ## Project Structure
 
+- `flake.nix` — NixOS flake with app modules as inputs
+- `nixos/` — NixOS server configuration
 - `tofu/` — OpenTofu (Terraform) configs for Hetzner provisioning
-- `nixos/` — NixOS server configuration, deployed via rsync + nixos-rebuild
-- `nixos/pb-instances.nix` — shared PocketBase instance definitions (used by both configuration.nix and caddy.nix)
 - `docs/PEP-001-infra.md` — full architecture document
 
 ## Deploy
 
 ```bash
-rsync -avz --delete nixos/ root@46.225.161.186:/etc/nixos/
-ssh root@46.225.161.186 "nixos-rebuild switch"
+nixos-rebuild switch --flake .#prod --target-host root@46.225.161.186 --build-host root@46.225.161.186
+```
+
+Update rekan:
+
+```bash
+nix flake lock --override-input rekan github:denisraison/rekan/v0.2.0  # specific release
+nix flake lock --update-input rekan                                     # latest main
 ```
 
 ## OpenTofu
@@ -31,9 +37,14 @@ nix run nixpkgs#opentofu -- plan
 nix run nixpkgs#opentofu -- apply
 ```
 
-## Adding a PocketBase Instance
+## Adding an App
 
-Edit `nixos/pb-instances.nix`, add a new entry, deploy. Caddy and systemd services are generated automatically.
+Each app repo exports a `nixosModules.default` from its flake. To add one:
+
+1. Add the app as a flake input in `flake.nix`
+2. Import its module in `nixosConfigurations.prod.modules`
+3. Configure `services.<app>` in `nixos/configuration.nix`
+4. Deploy
 
 ## Important
 

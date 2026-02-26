@@ -1,25 +1,6 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 
-let
-  pbInstances = import ./pb-instances.nix;
-
-  pocketbase = pkgs.stdenv.mkDerivation rec {
-    pname = "pocketbase";
-    version = "0.25.9";
-    src = pkgs.fetchurl {
-      url = "https://github.com/pocketbase/pocketbase/releases/download/v${version}/pocketbase_${version}_linux_arm64.zip";
-      sha256 = "1plxp6zz3325fv7rdjjlsdbrcdw58gc5kfl25shb94lbdr74489a";
-    };
-    nativeBuildInputs = [ pkgs.unzip ];
-    sourceRoot = ".";
-    unpackPhase = "unzip $src";
-    installPhase = ''
-      mkdir -p $out/bin
-      cp pocketbase $out/bin/
-      chmod +x $out/bin/pocketbase
-    '';
-  };
-in {
+{
   imports = [
     ./hardware-configuration.nix
     ./networking.nix
@@ -37,7 +18,7 @@ in {
   boot.tmp.cleanOnBoot = true;
   zramSwap.enable = true;
 
-  networking.hostName = "postador-prod";
+  networking.hostName = "prod";
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [ 22 ];
@@ -51,27 +32,9 @@ in {
     sqlite
   ];
 
-  # PocketBase systemd services
-  systemd.services = lib.mapAttrs' (name: cfg:
-    lib.nameValuePair "pocketbase-${name}" {
-      description = "PocketBase ${name}";
-      after = [ "network.target" ];
-      wantedBy = [ "multi-user.target" ];
-
-      serviceConfig = {
-        Type = "simple";
-        ExecStart = "${pocketbase}/bin/pocketbase serve --http=127.0.0.1:${toString cfg.port} --dir=/var/lib/pocketbase/${name}";
-        WorkingDirectory = "/var/lib/pocketbase/${name}";
-        Restart = "always";
-        RestartSec = 5;
-
-        DynamicUser = true;
-        StateDirectory = "pocketbase/${name}";
-        ProtectSystem = "strict";
-        ProtectHome = true;
-        NoNewPrivileges = true;
-        PrivateTmp = true;
-      };
-    }
-  ) pbInstances;
+  services.rekan = {
+    enable = true;
+    domain = "rekan.com.br";
+    envFile = "/run/secrets/rekan.env";
+  };
 }

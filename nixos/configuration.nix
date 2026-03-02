@@ -36,11 +36,13 @@
     prod = {
       domain = "rekan.com.br";
       envFile = "/etc/rekan.env";
+      whatsappNumber = "5511940699184";
     };
     staging = {
       domain = "staging.rekan.com.br";
       port = 8091;
       envFile = "/etc/rekan-staging.env";
+      whatsappNumber = "5511940699184";
       package = rekan-staging.packages.aarch64-linux.api;
       webRoot = rekan-staging.packages.aarch64-linux.web;
     };

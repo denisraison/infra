@@ -53,11 +53,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1773469148,
-        "narHash": "sha256-dFaX/8NCK94s4SPCf+bM0SHo4GbuV1kznhlDbQ3OWYM=",
+        "lastModified": 1773470028,
+        "narHash": "sha256-wKeB7FAVeFrVYgKuQtrnPpH8z4ZWekeeVKgrkdPoaYc=",
         "owner": "denisraison",
         "repo": "rekan",
-        "rev": "5730bec8b5f9d954d1642b5c50c0919abef205c1",
+        "rev": "aa6c3f0838f3fb237e22e70269ba45c1a301ee48",
         "type": "github"
       },
       "original": {

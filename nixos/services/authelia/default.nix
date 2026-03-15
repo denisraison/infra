@@ -18,7 +18,9 @@
     };
 
     settings = {
+      theme = "dark";
       server.address = "tcp://127.0.0.1:9091";
+      server.asset_path = "${./assets}";
       log.level = "info";
 
       authentication_backend.file.path = "${./users.yml}";

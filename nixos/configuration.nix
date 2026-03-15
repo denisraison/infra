@@ -6,6 +6,7 @@
     ./networking.nix
     ./users.nix
     ./services/caddy.nix
+    ./services/authelia
   ];
 
   system.stateVersion = "23.11";

@@ -1,0 +1,19 @@
+users:
+  denis:
+    displayname: Denis
+    email: denis@raison.dev
+    password: "$argon2id$v=19$m=65536,t=3,p=4$PdMb00Auaw3dPVy0bBrvGw$cvK3joUSXFY7asGgDDRCr8JT7z1cDZajTGvi4X/3vr4"
+    groups:
+      - admins
+  bruna:
+    displayname: Bruna
+    email: bruna@raison.dev
+    password: "$argon2id$v=19$m=65536,t=3,p=4$VwKNX8U1bs+OCjkgngahyQ$QsJp0gs/LMMFziuKbflrzHrir3NolCmUmqDC8igNh3I"
+    groups:
+      - users
+  guest:
+    displayname: Guest
+    email: guest@raison.dev
+    password: "$argon2id$v=19$m=65536,t=3,p=4$CN6zb9bUysr+5JCejL8+dA$OL4pW0kVsfWltIBxgNxZdyO+aEkmT5TFnEi+rtho4Dw"
+    groups:
+      - guests

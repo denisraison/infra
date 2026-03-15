@@ -1,6 +1,12 @@
 { pkgs, ... }:
 
 {
+  # Ensure secrets directory and files are readable by the authelia-main user
+  systemd.tmpfiles.rules = [
+    "d /etc/authelia-secrets 0750 root authelia-main -"
+    "z /etc/authelia-secrets/* 0400 authelia-main authelia-main -"
+  ];
+
   services.authelia.instances.main = {
     enable = true;
 

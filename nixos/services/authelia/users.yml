@@ -1,17 +1,17 @@
 users:
-  denis@raison.dev:
+  denis:
     displayname: Denis
     email: denis@raison.dev
     password: "$argon2id$v=19$m=65536,t=3,p=4$urnkl1PHU6O9xEYQUVodtA$/T4EmpxVU+Yic5W5TPJXSzEzQhm9qfejrl832sXI3/U"
     groups:
       - admins
-  bruna@raison.dev:
+  bruna:
     displayname: Bruna
     email: bruna@raison.dev
     password: "$argon2id$v=19$m=65536,t=3,p=4$a/kp2ITbKq/hyEDNUhGS7A$tTj/BUer5iSuZ9lD99iN6IcLtCj8FD/nD/OJD6op1yQ"
     groups:
       - users
-  amigos@raison.dev:
+  amigos:
     displayname: Amigos
     email: amigos@raison.dev
     password: "$argon2id$v=19$m=65536,t=3,p=4$4kJI4u/g7XYQhEl4LeYUOQ$+6SNUayOILU9moO7zjnM9QVQywzL3FOtN43lXv0Mh+w"

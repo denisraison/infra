@@ -24,6 +24,7 @@
       log.level = "info";
 
       authentication_backend.file.path = "${./users.yml}";
+      authentication_backend.file.search.email = true;
 
       session.cookies = [
         {

@@ -13,7 +13,7 @@ users:
       - users
   amigos:
     displayname: Amigos
-    email: guest@raison.dev
+    email: amigos@raison.dev
     password: "$argon2id$v=19$m=65536,t=3,p=4$4kJI4u/g7XYQhEl4LeYUOQ$+6SNUayOILU9moO7zjnM9QVQywzL3FOtN43lXv0Mh+w"
     groups:
       - guests

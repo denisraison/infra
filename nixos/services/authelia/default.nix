@@ -49,8 +49,7 @@
             scopes = [ "openid" "email" "profile" ];
             grant_types = [ "authorization_code" ];
             response_types = [ "code" ];
-            require_pkce = true;
-            pkce_challenge_method = "S256";
+            require_pkce = false;
           }
         ];
       };

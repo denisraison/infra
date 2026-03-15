@@ -50,6 +50,7 @@
             grant_types = [ "authorization_code" ];
             response_types = [ "code" ];
             require_pkce = true;
+            pkce_challenge_method = "S256";
           }
         ];
       };

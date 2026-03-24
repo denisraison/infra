@@ -19,6 +19,11 @@
   boot.tmp.cleanOnBoot = true;
   zramSwap.enable = true;
 
+  boot.kernel.sysctl = {
+    "net.ipv4.ip_forward" = 1;
+    "net.ipv6.conf.all.forwarding" = 1;
+  };
+
   networking.hostName = "prod";
   networking.firewall = {
     enable = true;

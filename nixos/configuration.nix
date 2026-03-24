@@ -23,6 +23,13 @@
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [ 22 ];
+    allowedUDPPorts = [ 41641 ];
+    trustedInterfaces = [ "tailscale0" ];
+  };
+
+  services.tailscale = {
+    enable = true;
+    extraUpFlags = [ "--advertise-exit-node" ];
   };
 
   environment.systemPackages = with pkgs; [

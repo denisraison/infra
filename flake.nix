@@ -2,7 +2,7 @@
   description = "Infrastructure — Hetzner CAX11 ARM64";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
     rekan.url = "github:denisraison/rekan";
     rekan-staging.url = "github:denisraison/rekan";
   };
